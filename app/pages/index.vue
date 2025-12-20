@@ -44,57 +44,57 @@
       </div>
 
       <!-- Example Sections -->
-      <div class="mt-8 bg-white overflow-hidden shadow sm:rounded-lg">
-        <div class="grid grid-cols-1 md:grid-cols-2">
-          <div class="p-6">
-            <div class="flex items-center">
-              <svg
-                class="w-8 h-8 text-gray-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 8v4l3 3"
-                />
-              </svg>
-              <div class="ml-4 text-lg leading-7 font-semibold text-gray-900">Tailwind Example</div>
-            </div>
-            <div class="ml-12">
-              <div class="mt-2 text-gray-600 text-sm">
-                This is a Laravel welcome page clone in Nuxt 3 using Tailwind CSS.
-              </div>
-            </div>
-          </div>
+<!--      <div class="mt-8 bg-white overflow-hidden shadow sm:rounded-lg">-->
+<!--        <div class="grid grid-cols-1 md:grid-cols-2">-->
+<!--          <div class="p-6">-->
+<!--            <div class="flex items-center">-->
+<!--              <svg-->
+<!--                class="w-8 h-8 text-gray-500"-->
+<!--                fill="none"-->
+<!--                stroke="currentColor"-->
+<!--                viewBox="0 0 24 24"-->
+<!--              >-->
+<!--                <path-->
+<!--                  stroke-linecap="round"-->
+<!--                  stroke-linejoin="round"-->
+<!--                  stroke-width="2"-->
+<!--                  d="M12 8v4l3 3"-->
+<!--                />-->
+<!--              </svg>-->
+<!--              <div class="ml-4 text-lg leading-7 font-semibold text-gray-900">Tailwind Example</div>-->
+<!--            </div>-->
+<!--            <div class="ml-12">-->
+<!--              <div class="mt-2 text-gray-600 text-sm">-->
+<!--                This is a Laravel welcome page clone in Nuxt 3 using Tailwind CSS.-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
 
-          <div class="p-6 border-t border-gray-200 md:border-t-0 md:border-l">
-            <div class="flex items-center">
-              <svg
-                class="w-8 h-8 text-gray-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 10h18M3 14h18"
-                />
-              </svg>
-              <div class="ml-4 text-lg leading-7 font-semibold text-gray-900">Another Section</div>
-            </div>
-            <div class="ml-12">
-              <div class="mt-2 text-gray-600 text-sm">
-                You can continue adding sections exactly like Laravel’s welcome page.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+<!--          <div class="p-6 border-t border-gray-200 md:border-t-0 md:border-l">-->
+<!--            <div class="flex items-center">-->
+<!--              <svg-->
+<!--                class="w-8 h-8 text-gray-500"-->
+<!--                fill="none"-->
+<!--                stroke="currentColor"-->
+<!--                viewBox="0 0 24 24"-->
+<!--              >-->
+<!--                <path-->
+<!--                  stroke-linecap="round"-->
+<!--                  stroke-linejoin="round"-->
+<!--                  stroke-width="2"-->
+<!--                  d="M3 10h18M3 14h18"-->
+<!--                />-->
+<!--              </svg>-->
+<!--              <div class="ml-4 text-lg leading-7 font-semibold text-gray-900">Another Section</div>-->
+<!--            </div>-->
+<!--            <div class="ml-12">-->
+<!--              <div class="mt-2 text-gray-600 text-sm">-->
+<!--                You can continue adding sections exactly like Laravel’s welcome page.-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
 
       <!-- Footer -->
       <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
