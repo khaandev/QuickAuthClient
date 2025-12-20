@@ -97,14 +97,14 @@
       </div>
 
       <!-- Footer -->
-      <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-        <div class="text-center text-sm text-gray-500 sm:text-left">Laravel Clone &copy; 2025</div>
-      </div>
+      <!--      <div class="flex justify-center mt-4 sm:items-center sm:justify-between">-->
+      <!--        <div class="text-center text-sm text-gray-500 sm:text-left">Laravel Clone &copy; 2025</div>-->
+      <!--      </div>-->
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
   // Empty script section
-  console.log('test
+  console.log('test')
 </script>
