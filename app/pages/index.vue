@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Index</h1>
+    <h1>Index mkhan</h1>
   </div>
 </template>
 
