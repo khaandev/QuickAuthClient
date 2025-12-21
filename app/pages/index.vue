@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Index page khan</h1>
+    <h1>Index page muhammad khan dev</h1>
   </div>
 </template>
 
