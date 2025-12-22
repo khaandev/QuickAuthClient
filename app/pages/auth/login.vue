@@ -11,6 +11,7 @@
             placeholder="examlpe@gmail.com"
             class="text-gray-500"
           />
+          <ValidationError field="email" />
         </div>
 
         <div>
@@ -21,6 +22,7 @@
             placeholder="*******"
             class="text-gray-500"
           />
+          <ValidationError field="password" />
         </div>
 
         <div class="text-sm">
@@ -29,20 +31,18 @@
 
         <PrimaryButton type="submit"> Login </PrimaryButton>
       </form>
+      <p class="mt-6 text-center text-sm text-gray-600">
+        Don’t have an account?
+        <Nuxt-link to="/auth/register" class="text-blue-500 hover:underline">Sign up</Nuxt-link>
+      </p>
     </template>
-
-    <!--    <p class="mt-6 text-center text-sm text-gray-600">-->
-    <!--      Don’t have an account?-->
-    <!--      <Nuxt-link to="/guest/register" class="text-blue-500 hover:underline">Sign up</Nuxt-link>-->
-    <!--    </p>-->
   </FormLayout>
 </template>
 
-<script setup>
-  // import FormLayout from "~/layouts/Guest/FormLayout.vue";
-  // import login from '~/pages/auth/login.vue'
-  // const auth = useAuthStore();
+<script setup lang="ts">
   import FormLayout from '~/layouts/guest/FormLayout.vue'
+  import { useAuthStore } from '~/store/auth'
+  const auth = useAuthStore()
 
   const form = reactive({
     email: 'khan@gmail.com',
@@ -50,7 +50,6 @@
   })
 
   const handleLogin = async () => {
-    // await auth.attemptLogin(form);
-    console.log(form)
+    await auth.loginUser(form)
   }
 </script>

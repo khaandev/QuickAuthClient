@@ -11,7 +11,7 @@
             class="text-gray-500"
             placeholder="John Doe"
           />
-          <!--        <ValidationError field="name" />-->
+          <ValidationError field="name" />
         </div>
 
         <div>
@@ -22,7 +22,7 @@
             type="email"
             placeholder="example@gmail.com"
           />
-          <!--        <ValidationError field="email" />-->
+          <ValidationError field="email" />
         </div>
         <div>
           <BaseInput
@@ -32,12 +32,12 @@
             type="password"
             placeholder="********"
           />
-          <!--        <ValidationError field="password" />-->
+          <ValidationError field="password" />
         </div>
         <div>
           <div>
             <BaseInput
-              v-model="form.c_password"
+              v-model="form.password_confirmation"
               class="text-gray-500"
               label="Re-type Password"
               type="password"
@@ -48,24 +48,27 @@
 
         <PrimaryButton type="submit"> Register </PrimaryButton>
       </form>
+      <p class="mt-6 text-center text-sm text-gray-600">
+        Already have an account?
+        <Nuxt-link to="/auth/login" class="text-blue-500 hover:underline">Log in</Nuxt-link>
+      </p>
     </template>
-    <!--    <p class="mt-6 text-center text-sm text-gray-600">-->
-    <!--      Already have an account?-->
-    <!--      <Nuxt-link to="/guest/login" class="text-blue-500 hover:underline">Log in</Nuxt-link>-->
-    <!--    </p>-->
   </FormLayout>
 </template>
 
 <script setup>
   import FormLayout from '~/layouts/guest/FormLayout.vue'
+  import { useAuthStore } from '~/store/auth.js'
+  const auth = useAuthStore()
 
   const form = reactive({
     name: '',
     email: '',
     password: '',
-    c_password: '',
+    password_confirmation: '',
   })
   const handleRegister = async () => {
+    await auth.registerUser(form)
     console.log(form)
   }
 
