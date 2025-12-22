@@ -7,9 +7,8 @@
     field: {
       type: String,
       default: '',
-    }
+    },
   })
-
 </script>
 
 <template>

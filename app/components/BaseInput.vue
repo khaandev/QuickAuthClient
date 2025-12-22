@@ -33,7 +33,11 @@
 
 <template>
   <div class="flex flex-col w-full">
-    <label v-if="props.label" :for="props.id" class="block text-sm font-medium text-gray-700">
+    <label
+      v-if="props.label"
+      :for="props.id"
+      class="block text-sm font-medium text-gray-900 dark:text-gray-100"
+    >
       {{ props.label }}
       <span v-if="props.required" class="text-red-500">*</span>
     </label>
@@ -48,7 +52,7 @@
         :disabled="props.disabled"
         class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         @input="updateModelValue($event.target.value)"
-      >
+      />
     </div>
   </div>
 </template>

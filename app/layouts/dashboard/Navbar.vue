@@ -1,163 +1,173 @@
 <template>
   <header
-    class="bg-white dark:bg-gray-800 shadow px-4 py-3 flex justify-between items-center border-b border-gray-200 dark:border-gray-700"
+    class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800"
   >
-    <!-- Left: Sidebar toggle + Title -->
-    <div class="flex items-center gap-4">
-      <button
-        class="md:hidden text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
-        @click="$emit('toggleSidebar')"
-      >
-        <Icon name="heroicons:bars-3" class="w-5 h-5" />
-      </button>
-      <h1 class="text-lg font-semibold text-gray-800 dark:text-white">Admin Dashboard</h1>
-    </div>
-
-    <!-- Right controls -->
-    <div class="flex items-center gap-3">
-      <!-- Dark/Light Mode -->
-
-      <!-- Profile Dropdown -->
-      <div v-click-outside="() => (dropdownOpen = false)" class="relative">
-        <button
-          class="flex items-center gap-2 hover:opacity-80 transition-opacity"
-          @click="dropdownOpen = !dropdownOpen"
-        >
-          <img
-            src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin"
-            alt="Avatar"
-            class="w-8 h-8 rounded-full border-2 border-gray-300 dark:border-gray-600"
-          >
-          <Icon
-            name="heroicons:chevron-down"
-            class="w-4 h-4 text-gray-500 dark:text-gray-300 transition-transform"
-            :class="{ 'rotate-180': dropdownOpen }"
-          />
-        </button>
-
-        <div
-          v-if="dropdownOpen"
-          class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg py-2 z-50 border border-gray-200 dark:border-gray-700"
-        >
-          <NuxtLink
-            to="/profile"
-            class="flex items-center gap-3 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-sm text-gray-700 dark:text-gray-200"
-            @click="dropdownOpen = false"
-          >
-            <Icon name="heroicons:user" class="w-4 h-4" /> Profile
-          </NuxtLink>
-          <NuxtLink
-            to="/settings"
-            class="flex items-center gap-3 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-sm text-gray-700 dark:text-gray-200"
-            @click="dropdownOpen = false"
-          >
-            <Icon name="heroicons:cog-6-tooth" class="w-4 h-4" /> Settings
-          </NuxtLink>
-          <div class="border-t border-gray-200 dark:border-gray-700 my-1"/>
+    <div class="px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Left: Sidebar toggle + Title -->
+        <div class="flex items-center">
           <button
-            class="flex items-center gap-3 w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-sm text-red-600 dark:text-red-400"
-            @click="handeLogout"
+            @click="emit('toggleSidebar')"
+            class="p-2 rounded-lg text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            aria-label="Toggle sidebar"
           >
-            <Icon name="heroicons:arrow-right-on-rectangle" class="w-4 h-4" /> Logout
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
           </button>
-        </div>
-      </div>
-    </div>
 
-    <!-- Notification Slide-Out Panel -->
-    <transition name="slide">
-      <div
-        v-show="showNotification"
-        class="fixed top-0 right-0 z-40 w-full max-w-sm h-full bg-white dark:bg-gray-800 shadow-xl p-6 overflow-y-auto border-l border-gray-200 dark:border-gray-700"
-      >
-        <div class="flex justify-between items-center mb-6">
-          <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Notifications</h2>
-          <button
-            class="text-gray-500 hover:text-gray-800 dark:hover:text-white p-1"
-            @click="showNotification = false"
-          >
-            <Icon name="heroicons:x-mark" class="w-5 h-5" />
-          </button>
-        </div>
-        <div class="space-y-4">
-          <div
-            v-for="(notification, index) in notifications"
-            :key="index"
-            class="p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer"
-          >
-            <div class="flex items-start gap-3">
-              <div
-                class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center"
-                :class="{
-                  'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300':
-                    notification.type === 'info',
-                  'bg-yellow-100 text-yellow-600 dark:bg-yellow-900 dark:text-yellow-300':
-                    notification.type === 'warning',
-                  'bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-300':
-                    notification.type === 'success',
-                }"
-              >
-                <Icon :name="notification.icon" class="w-4 h-4" />
-              </div>
-              <div class="flex-1">
-                <p class="text-sm font-medium text-gray-800 dark:text-white">
-                  {{ notification.title }}
-                </p>
-                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">{{ notification.time }}</p>
-              </div>
+          <div class="ml-4 flex items-center">
+            <h1 class="text-xl font-semibold text-gray-900 dark:text-white">Dashboard</h1>
+            <div
+              class="ml-3 px-2 py-1 text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full"
+            >
+              v1.0
             </div>
           </div>
         </div>
+
+        <!-- Right: Actions & User Menu -->
+        <div class="flex items-center space-x-4">
+          <!-- Search (Desktop) -->
+          <div class="hidden md:block relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg
+                class="h-4 w-4 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </div>
+            <input
+              type="search"
+              placeholder="Search..."
+              class="pl-10 w-48 lg:w-64 px-3 py-2 text-sm rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+            />
+          </div>
+
+          <!-- Notifications -->
+          <div class="relative">
+            <button
+              @click="toggleNotifications"
+              class="p-2 rounded-lg text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors relative"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                />
+              </svg>
+              <span
+                v-if="hasNotifications"
+                class="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full"
+              ></span>
+            </button>
+          </div>
+
+          <!-- Theme Toggle -->
+          <button
+            @click="toggleTheme"
+            class="p-2 rounded-lg text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            aria-label="Toggle theme"
+          >
+            <svg
+              v-if="isDark"
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+              />
+            </svg>
+            <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+              />
+            </svg>
+          </button>
+
+          <!-- User Menu -->
+        </div>
       </div>
-    </transition>
+    </div>
   </header>
 </template>
 
 <script setup>
-  import { ref } from 'vue'
+  import { ref, onMounted } from 'vue'
 
-  const dropdownOpen = ref(false)
-  const showNotification = ref(false)
+  const emit = defineEmits(['toggleSidebar'])
 
-  // Mock notifications
-  const notifications = [
-    {
-      type: 'info',
-      icon: 'heroicons:user-plus',
-      title: 'New user registered',
-      time: '5 minutes ago',
-    },
-    {
-      type: 'warning',
-      icon: 'heroicons:exclamation-triangle',
-      title: 'Server load high',
-      time: '1 hour ago',
-    },
-    {
-      type: 'success',
-      icon: 'heroicons:megaphone',
-      title: 'New announcement posted',
-      time: '2 hours ago',
-    },
-  ]
+  const showUserMenu = ref(false)
+  const hasNotifications = ref(true)
+  const isDark = ref(false)
 
-  // function toggleDark() {
-  //   colorMode.preference = isDark.value ? 'light' : 'dark'
-  // }
+  const toggleNotifications = () => {
+    hasNotifications.value = false
+    // Here you would typically fetch/clear notifications
+  }
 
-  const handeLogout = async () => {
-    // Your logout logic here
+  const toggleTheme = () => {
+    isDark.value = !isDark.value
+    if (isDark.value) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    localStorage.setItem('theme', isDark.value ? 'dark' : 'light')
+  }
+
+  const logout = () => {
     console.log('Logging out...')
+    // Add your logout logic here
+    showUserMenu.value = false
+  }
+
+  // Check for saved theme preference
+  onMounted(() => {
+    const savedTheme = localStorage.getItem('theme')
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      isDark.value = true
+      document.documentElement.classList.add('dark')
+    }
+  })
+
+  // Click outside directive
+  const vClickOutside = {
+    mounted(el, binding) {
+      el.clickOutsideEvent = (event) => {
+        if (!(el === event.target || el.contains(event.target))) {
+          binding.value(event)
+        }
+      }
+      document.addEventListener('click', el.clickOutsideEvent)
+    },
+    unmounted(el) {
+      document.removeEventListener('click', el.clickOutsideEvent)
+    },
   }
 </script>
-
-<style scoped>
-  .slide-enter-active,
-  .slide-leave-active {
-    transition: transform 0.3s ease;
-  }
-  .slide-enter-from,
-  .slide-leave-to {
-    transform: translateX(100%);
-  }
-</style>
