@@ -8,7 +8,17 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
   css: ['./app/assets/css/main.css'],
-
+  ui: {
+    colorMode: true,
+  },
+  pinia: {
+    storesDirs: ['./stores/**', './custom-folder/stores/**'],
+  },
+  runtimeConfig: {
+    public: {
+      apiBase: process.env.API_BASE_URL || 'http://localhost:8000',
+    },
+  },
   modules: [
     '@nuxt/content',
     '@nuxt/eslint',
@@ -17,5 +27,6 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
     '@nuxt/test-utils',
     '@nuxt/ui',
+    '@pinia/nuxt',
   ],
 })
