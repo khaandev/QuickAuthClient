@@ -6,7 +6,7 @@
         <div>
           <h1 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">Dashboard</h1>
           <p class="text-gray-600 dark:text-gray-400 mt-2">
-            Welcome back, Administrator! Here's what's happening today.
+            Welcome back {{auth.user.name}}, Administrator! Here's what's happening today.
           </p>
         </div>
         <div class="flex items-center gap-3">
@@ -444,7 +444,10 @@
 </template>
 
 <script setup lang="ts">
+import { useAuthStore } from '~/store/auth'
+
   import MainLayout from '~/layouts/dashboard/MainLayout.vue'
+const auth = useAuthStore();
 
   // Sample data for recent activities
   const recentActivities = [

@@ -26,7 +26,6 @@ export const useAuthStore = defineStore('auth', () => {
   async function registerUser(data) {
     try {
       common.validationError = null
-      await authApi.getCsrfCookie()
       await authApi.register(data)
       return true
     } catch (err) {
@@ -41,7 +40,6 @@ export const useAuthStore = defineStore('auth', () => {
       common.validationError = null
       common.Invalid = null
 
-      await authApi.getCsrfCookie()
       const response = await authApi.login(data)
 
       if (response?.token && response?.user) {
